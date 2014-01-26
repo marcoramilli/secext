@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- 
+
+File: about.xul
+Describes a stand-alone dialog reporting some informations
+about the extension and the author; most of the tags describes
+graphical elements (text, groupbox, buttons) and their style.
+
+autostretch="always" means that the dialog 
+won't be resizable 
+
+onload="sizeToContent()" means that the dialog size will fit 
+the size of the elements
+
+onclick="window.open('http://deisnet.deis.unibo.it/'); window.close();"
+when clicking on the link, opens the web page in a new window and
+closes the dialog.
+
+To learn more, https://developer.mozilla.org/en/XUL/dialog
+
+-->
+
+<window class="dialog"
+   title="SecureExt 0.1 - About" orient="vertical"
+   autostretch="always" onload="sizeToContent()"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+   <groupbox align="center" orient="horizontal">
+      <vbox>
+         <text value="SecureExt" style="font-weight: bold; font-size: x-large;"/>
+         <text value="ver. 0.1"/>
+         <separator class="thin"/>
+         <text value="Created By:" style="font-weight: bold;"/>
+         <text value="Simone Colella, Giacomo Pezzi" />
+         <separator class="thin"/>
+         <text value="Home Page:" style="font-weight: bold;"/>
+         <text value="http://deisnet.deis.unibo.it/" class="url"
+            onclick="window.open('http://deisnet.deis.unibo.it/'); window.close();"/>
+         <separator class="thin"/>
+      </vbox>
+      <spring flex="1"/>
+   </groupbox>
+   
+   <hbox>
+      <spacer flex="1"/>
+      <button label="Exit" oncommand="window.close();"/>
+   </hbox>
+</window>

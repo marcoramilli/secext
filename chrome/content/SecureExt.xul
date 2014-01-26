@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!--
+
+File: SecureExt.xul
+Describes an overlay, i.e. a graphical extension to something. This one
+will extend the firefox main window, browser.xul (you can fnd it in 
+[install path]\Mozilla Firefox\chrome\browser.jar) putting a small icon 
+in the bottom-right corner, in the status bar (we add to Firefox's status bar, 
+identified by the id "status-bar", a statusbarpanel; on click, opens the about
+dialog).
+To this xul are attached a css (tells what icon must be displayed; it uses selectors
+to choose the right icon in function of the <checkresult> value; more information
+at http://www.w3.org/TR/CSS21/selector.html#attribute-selectors) and three js
+(look at them to learn more).
+
+-->
+
+<?xml-stylesheet href="chrome://SecureExt/skin/clickjacking/ClickJacking.css"
+                 type="text/css"?>
+
+<overlay id="SecureExt" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">		 
+		 
+<script type="application/x-javascript"
+        src="chrome://SecureExt/content/SecureExt.js" />
+	
+<script type="application/x-javascript"
+        src="chrome://SecureExt/content/clickjacking/Status.js" />
+		
+<script type="application/x-javascript"
+        src="chrome://SecureExt/content/clickjacking/TestPage.js" />
+        
+<script type="application/x-javascript"
+		src="chrome://SecureExt/content/httpsstrip/Utils.js" />
+		
+<script type="application/x-javascript"
+		src="chrome://SecureExt/content/httpsstrip/Md5.js" />
+		
+<script type="application/x-javascript"
+		src="chrome://SecureExt/content/httpsstrip/InputOutput.js" />
+
+<script type="application/x-javascript"
+		src="chrome://SecureExt/content/httpsstrip/P2PUtils.js" />
+        
+<statusbar id="status-bar">
+
+  <statusbarpanel id="clickjacking-statusbar-panel"
+                  class="statusbarpanel-iconic"
+				  checkresult="green"
+				  tooltiptext="ClickJackThis!"
+				  context="menu" /> 
+				  
+</statusbar>
+
+<popupset>
+  <menupopup id="menu">
+    <menuitem label="About" 
+	          default="true"
+              oncommand="test();"/>
+    <menuseparator/>
+    <menuitem label="Configure"
+	          oncommand="window.openDialog('chrome://SecureExt/content/pref.xul', '', 'centerscreen,chrome,resizable=no');" />
+  </menupopup>
+</popupset>
+
+</overlay>

@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+ 
+ <!-- 
+
+File: pref.xul
+Describes the options dialog. Lets the user select whether be
+alerted for red and yellow pages or not. Lets also the user to 
+enable logging the stats.
+More info at: https://developer.mozilla.org/en/Adding_preferences_to_an_extension
+
+-->
+ 
+<prefwindow id="pref"
+     title="SecureExt - Configuration Panel"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+> 
+	 
+
+
+ 	<script type="application/x-javascript" src="chrome://SecureExt/content/SecureExt.js" />
+ 	<script type="application/x-javascript" src="chrome://SecureExt/content/clickjacking/TestPage.js" />
+ 	<script type="application/x-javascript" src="chrome://SecureExt/content/httpsstrip/InputOutput.js" />
+ 	<script type="application/x-javascript" src="chrome://SecureExt/content/httpsstrip/Md5.js" />
+ 	<script type="application/x-javascript" src="chrome://SecureExt/content/httpsstrip/Utils.js" />
+	<script type="application/x-javascript" src="chrome://SecureExt/content/httpsstrip/P2PUtils.js" />
+ 	
+<prefpane id="prefPane" label="Settings">
+
+  <preferences>
+    <preference id="CJalert" name="extensions.SecureExt.CJalert" type="bool"/>
+	<preference id="CJwarn" name="extensions.SecureExt.CJwarn" type="bool"/>
+	<preference id="CJlog" name="extensions.SecureExt.CJlog" type="bool"/>
+	<preference id="CJtextdir" name="extensions.SecureExt.CJtextdir" type="string"/>
+	<preference id="HSalert" name="extensions.SecureExt.HSalert" type="bool"/>
+	<preference id="HSvv" name="extensions.SecureExt.HSvv" type="bool" disabled="true"/> 
+	<preference id="HSlog" name="extensions.SecureExt.HSlog" type="bool"/>
+	<preference id="HStextdir" name="extensions.SecureExt.HStextdir" type="string"/>
+	<preference id="UrlField" name="extensions.SecureExt.UrlField" type="string" instantApply="true"/>
+	<preference id="AddURL" name="extensions.SecureExt.AddURL" type="bool"/>
+	<preference id="UpgrDB" name="extensions.SecureExt.UpgrDB" type="bool"/>
+	<preference id="P2Psync" name="extensions.SecureExt.P2Psync" type="bool"/>
+	<preference id="P2PsyncDB" name="extensions.SecureExt.P2PsyncDB" type="bool"/>
+	<preference id="P2PDnsField" name="extensions.SecureExt.P2PDnsField" type="string" />
+	<preference id="P2PPort" name="extensions.SecureExt.P2PPort" type="string" />
+	<preference id="P2PTime" name="extensions.SecureExt.P2PTime" type="string" />
+  </preferences>
+ 
+ 
+<groupbox>
+	<caption label="ClickJacking"/>
+	<vbox align="left">
+		<checkbox preference="CJalert" label="Alert me of ClickJacking attempts"/>
+    	<checkbox preference="CJwarn" label="Warn me about possible ClickJacking attempts"/>
+    	<checkbox preference="CJlog" label="Log stats"/>
+  	</vbox>
+  
+</groupbox>
+  
+  
+  
+  
+<groupbox>
+   <caption label="HTTPS Stripping"/>
+   <vbox align="left">
+      <box orient="horizontal">
+	 <checkbox preference="HSalert" label="Alert me of HTTPS Stripping attempts"/>
+	 <checkbox preference="HSvv" label="Very Verbose Mode"/>
+      </box>
+      <checkbox preference="HSlog" label="Log stats"/>
+      <groupbox width="400">
+	 <caption label="Database"/>
+	 <box orient="horizontal">
+	    <textbox preference="UrlField" value="Enter here a new URL"/>
+	    <button preference="AddURL" label="Add URL to list" oncommand="addURLtoList();" />
+   	 </box>
+	 <button preference="UpgrDB" label="Upgrade DataBase" oncommand="upgradeDB();" />
+	 <progressmeter id="HSprog" mode="determined" value="0"/>
+         <vbox align="left">
+	    <checkbox preference="P2Psync" label="Synchronize through P2P network" onclick="document.getElementById('P2PsyncDB').disabled = this.checked"/>
+	    <checkbox preference="P2PsyncDB" label="Keep a local copy of the whole database" onclick="setChanged()"/>
+	    <groupbox>
+	       <caption label="P2P Settings"/>
+	       <grid>
+		  <columns>
+		     <column flex="1"/>
+		     <column flex="2"/>
+		  </columns>
+		  <rows>
+		     <row align="center">
+			<label value="Bootstrap DNS: " control="dns"/>
+			<textbox preference="P2PDnsField" />
+	             </row>
+		     <row align="center">
+			<label value="Port: " control="port"/>
+		        <textbox preference="P2PPort" />
+		     </row>
+		     <row align="center">
+		        <label value="Synchronization interval (ms): " control="time" />
+		        <textbox preference="P2PTime" /> 
+		     </row>
+		  </rows>
+	       </grid>
+	    </groupbox>
+	 </vbox>
+      </groupbox>
+   </vbox>
+</groupbox>
+
+  
+</prefpane>
+ 
+</prefwindow>

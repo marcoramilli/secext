@@ -1,0 +1,11 @@
+#clickjacking-statusbar-panel[checkresult="green"] {
+    list-style-image: url("chrome://SecureExt/skin/clickjacking/img/green.png");
+}
+ 
+#clickjacking-statusbar-panel[checkresult="yellow"] {
+    list-style-image: url("chrome://SecureExt/skin/clickjacking/img/yellow.png");
+}
+
+#clickjacking-statusbar-panel[checkresult="red"] {
+    list-style-image: url("chrome://SecureExt/skin/clickjacking/img/red.png");
+}

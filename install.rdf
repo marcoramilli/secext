@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!-- 
+
+File: install.rdf
+Contains some information about this application (the extension; 
+info are author, version, if it's a theme or an extension...) and 
+about the target application (Firefox; info are min and max
+version supported)
+
+-->
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{2a955e0c-6914-4816-a95c-f764b672b7c1}</em:id>
+    <em:version>0.1</em:version>
+    <em:type>2</em:type>
+    <em:unpack>true</em:unpack>
+   
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+	
+        <em:maxVersion>4.5</em:maxVersion>
+        <em:minVersion>3.0</em:minVersion>
+      </Description>
+    </em:targetApplication>
+   
+    <em:name>SecureExt</em:name>
+    <em:description>Protects you against ClickJacking and HTTPS Strip based attacks.</em:description>
+    <em:creator>Simone Colella, Giacomo Pezzi</em:creator>
+    <em:homepageURL>http://deisnet.deis.unibo.it/</em:homepageURL>
+	<em:optionsURL>chrome://SecureExt/content/pref.xul</em:optionsURL>
+  </Description>      
+  
+</RDF>

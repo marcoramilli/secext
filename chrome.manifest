@@ -1,0 +1,3 @@
+content SecureExt chrome/content/
+skin SecureExt classic/1.0 chrome/skin/
+overlay chrome://browser/content/browser.xul chrome://SecureExt/content/SecureExt.xul
