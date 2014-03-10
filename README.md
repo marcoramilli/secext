@@ -48,3 +48,7 @@ The extension works in two phases:
 - "Page Evaluation": compares the hash function of the currently uploaded page with the corresponding value in the DB during the browsing. 
 
 ![alt text](http://deisnet.deis.unibo.it/nsl/securext/images/hs_scheme.jpg "My solution")
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/marcoramilli/secext/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
