@@ -1,4 +1,4 @@
-Firefox Security Extension
+Firefox Security Extension [![Support Marco via Gittip](http://img.shields.io/gittip/marco.svg)](https://www.gittip.com/marco/)
 ============
 
 ### The Scientific Papers.
